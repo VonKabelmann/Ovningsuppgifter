@@ -165,6 +165,7 @@ string monthInput1;
 string monthInput2;
 int monthIndex1;
 int monthIndex2;
+int monthDiff = 0;
 
 Console.Write("Input a month: ");
 while (true)
@@ -181,7 +182,7 @@ while (true)
         break;
 	}
 }
-Console.WriteLine("Input a second month: ");
+Console.Write("Input a second month: ");
 while (true)
 {
     monthInput2 = Console.ReadLine().ToLower();
@@ -192,46 +193,26 @@ while (true)
     }
     else
     {
-        monthIndex2 = Array.IndexOf(months, monthInput1);
+        monthIndex2 = Array.IndexOf(months, monthInput2);
         break;
     }
 }
-switch (monthIndex1)
+Console.WriteLine($"The first month you entered is {monthInput1} and it is month number {monthIndex1 + 1}.");
+Console.WriteLine($"The second month you entered is {monthInput2} and it is month number {monthIndex2 + 1}.");
+monthDiff = monthIndex1 - monthIndex2;
+if (monthDiff < 0)
 {
-    case 0:
-        
-        break;
-    case 1:
-        
-        break;
-    case 2:
-
-        break;
-    case 3:
-
-        break;
-    case 4:
-
-        break;
-    case 5:
-
-        break;
-    case 6:
-
-        break;
-    case 7:
-
-        break;
-    case 8:
-
-        break;
-    case 9:
-
-        break;
-    case 10:
-
-        break;
-    case 11:
-
-        break;
+    monthDiff = monthDiff * -1;
 }
+if (monthDiff > 6)
+{
+    if (monthIndex1 < monthIndex2)
+    {
+        monthDiff = monthIndex1 + 12 - monthIndex2;
+    }
+    else if (monthIndex1 > monthIndex2)
+    {
+        monthDiff = monthIndex2 + 12 - monthIndex1;
+    }
+}
+Console.WriteLine($"The difference between the two months is {monthDiff}");
