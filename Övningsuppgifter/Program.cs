@@ -151,68 +151,137 @@
 //    Console.WriteLine($"{firstNum} minus {secondNum} is equal to {firstNum - secondNum}");
 //}
 
-//Övningsuppgift 7
+////Övningsuppgift 7
 
-//Skriv ett program som ber användaren skriva in en månad. Programmet ska göra om månaden till månadens siffervärde. 
-//    T.ex. ska januari bli 1 och december 12. Använd switch. Alternativ: Prova även att lösa uppgiften med array och/eller enum.
+//string[] months = { "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december" };
+//string monthInput1;
+//string monthInput2;
+//int monthIndex1;
+//int monthIndex2;
+//int monthDiff = 0;
 
-//Extra utmaning: Be användaren om två månader och räkna sedan ut hur många månader som skiljer mellan dem. 
-//    Tänk på att ett månaderna upprepas till nästa år. Skriver man mars och maj bör man få 2. 
-//    Likaså om man skriver november och januari.
+//Console.Write("Input a month: ");
+//while (true)
+//{
+//    monthInput1 = Console.ReadLine().ToLower();
+//	if (Array.IndexOf(months, monthInput1) == -1)
+//	{
+//		Console.WriteLine("There is no such month.");
+//		Console.Write("Please enter a valid month: ");
+//	}
+//	else
+//	{
+//        monthIndex1 = Array.IndexOf(months, monthInput1);
+//        break;
+//	}
+//}
+//Console.Write("Input a second month: ");
+//while (true)
+//{
+//    monthInput2 = Console.ReadLine().ToLower();
+//    if (Array.IndexOf(months, monthInput2) == -1)
+//    {
+//        Console.WriteLine("There is no such month.");
+//        Console.Write("Please enter a valid month: ");
+//    }
+//    else
+//    {
+//        monthIndex2 = Array.IndexOf(months, monthInput2);
+//        break;
+//    }
+//}
+//Console.WriteLine($"The first month you entered is {monthInput1} and it is month number {monthIndex1 + 1}.");
+//Console.WriteLine($"The second month you entered is {monthInput2} and it is month number {monthIndex2 + 1}.");
+//monthDiff = monthIndex1 - monthIndex2;
+//if (monthDiff < 0)
+//{
+//    monthDiff = monthDiff * -1;
+//}
+//if (monthDiff > 6)
+//{
+//    if (monthIndex1 < monthIndex2)
+//    {
+//        monthDiff = monthIndex1 + 12 - monthIndex2;
+//    }
+//    else if (monthIndex1 > monthIndex2)
+//    {
+//        monthDiff = monthIndex2 + 12 - monthIndex1;
+//    }
+//}
+//Console.WriteLine($"The difference between the two months is {monthDiff}");
 
-string[] months = { "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december" };
-string monthInput1;
-string monthInput2;
-int monthIndex1;
-int monthIndex2;
-int monthDiff = 0;
+//Övningsuppgift 8
+//Skapa ett program som skriver ut 1 på första raden, 2 på nästa, sedan 4, o.s.v (dubbelt så hög siffra för varje rad). 
+//Fortsätt till du skrivit ut 16 rader.
 
-Console.Write("Input a month: ");
+
+//int value = 1;
+
+//for (int i = 0; i < 16; i++)
+//{
+//    Console.WriteLine(value);
+//    value = value * 2;
+//}
+
+//    Övningsuppgift 9
+//    Skriv ett program som frågar användaren efter ett tal mellan 1 och 100. 
+//    Programmet ska ha ett hemligt tal lagrat i en variabel. 
+//    Det ska fortsätta fråga användaren till dess att användaren gissar det hemliga talet. 
+//    Om man gissade för högt eller för lågt så ska det skrivas ut, så att användaren har en rimlig chans att klara det. 
+//    Exempel: programmet har det hemliga talet 27. Användaren gissar på 50. 
+//    Programmet skriver ut att användaren gissade för högt. Användaren gissar på 20. 
+//    Programmet skriver ut att det var för lågt. Användaren gissar på 27. 
+//    Programmet skriver ut att det var rätt och avslutas.
+
+//    Extra utmaning: slumpa det hemliga talet med hjälp av Random (kolla upp på google hur det fungerar). 
+//    Spara antalet gissningar i en variabel och skriv ut det när användaren gissat rätt.
+
+Random randomNum = new Random();
+int correctNum;
+int numInput;
+int guessAmount = 0;
+int guessMax = 100;
+int guessMin = 1;
+
+correctNum = randomNum.Next(guessMin, guessMax);
+// Console.WriteLine($"The correct number is: {correctNum}"); // för debug
+Console.WriteLine("The goal of this game is to guess the secret number between 1 to 100.");
 while (true)
 {
-    monthInput1 = Console.ReadLine().ToLower();
-	if (Array.IndexOf(months, monthInput1) == -1)
+	Console.Write($"Please enter a number between {guessMin} and {guessMax}: ");
+	while (Int32.TryParse(Console.ReadLine(), out numInput))
 	{
-		Console.WriteLine("There is no such month.");
-		Console.Write("Please enter a valid month: ");
+		if (numInput < guessMin || numInput > guessMax || numInput == 0)
+		{
+			Console.WriteLine($"Invalid entry. You must enter a number between {guessMin} and {guessMax}.");
+			Console.Write($"Please enter a number between {guessMin} and {guessMax}: ");
+		}
+		else
+		{
+			guessAmount++;
+			break;
+		}
 	}
-	else
+	if (numInput == correctNum)
 	{
-        monthIndex1 = Array.IndexOf(months, monthInput1);
-        break;
+		Console.WriteLine("Congratulations! You've guessed the correct number!");
+		break;
+	}
+	else if (numInput > correctNum)
+	{
+		guessMax = numInput;
+		Console.WriteLine($"Incorrect. The number is lower than {numInput}");
+	}
+	else if (numInput < correctNum && numInput != 0)
+	{
+		guessMin = numInput;
+		Console.WriteLine($"Incorrect. The number is higher than {numInput}");
 	}
 }
-Console.Write("Input a second month: ");
-while (true)
-{
-    monthInput2 = Console.ReadLine().ToLower();
-    if (Array.IndexOf(months, monthInput2) == -1)
-    {
-        Console.WriteLine("There is no such month.");
-        Console.Write("Please enter a valid month: ");
-    }
-    else
-    {
-        monthIndex2 = Array.IndexOf(months, monthInput2);
-        break;
-    }
-}
-Console.WriteLine($"The first month you entered is {monthInput1} and it is month number {monthIndex1 + 1}.");
-Console.WriteLine($"The second month you entered is {monthInput2} and it is month number {monthIndex2 + 1}.");
-monthDiff = monthIndex1 - monthIndex2;
-if (monthDiff < 0)
-{
-    monthDiff = monthDiff * -1;
-}
-if (monthDiff > 6)
-{
-    if (monthIndex1 < monthIndex2)
-    {
-        monthDiff = monthIndex1 + 12 - monthIndex2;
-    }
-    else if (monthIndex1 > monthIndex2)
-    {
-        monthDiff = monthIndex2 + 12 - monthIndex1;
-    }
-}
-Console.WriteLine($"The difference between the two months is {monthDiff}");
+
+//    Extra utmaning 2: skriv ett sten-sax-påse spel. 
+//    Användaren skriver in “sten”, “sax” eller “påse”. Dators val slumpas med Random. 
+//    Skriv sedan ut vad datorn valde, och vem som vann omgången. 
+//    Lägg det hela i en loop så spelet fortsätter tills man matar in en tom sträng (trycker enter utan att skriva något). 
+//    Skriv även ut poäng.
+
