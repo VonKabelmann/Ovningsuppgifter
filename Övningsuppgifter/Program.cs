@@ -236,48 +236,48 @@
 //    Extra utmaning: slumpa det hemliga talet med hjälp av Random (kolla upp på google hur det fungerar). 
 //    Spara antalet gissningar i en variabel och skriv ut det när användaren gissat rätt.
 
-Random randomNum = new Random();
-int correctNum;
-int numInput;
-int guessAmount = 0;
-int guessMax = 100;
-int guessMin = 1;
+//Random randomNum = new Random();
+//int correctNum;
+//int numInput;
+//int guessAmount = 0;
+//int guessMax = 100;
+//int guessMin = 1;
 
-correctNum = randomNum.Next(guessMin, guessMax);
-// Console.WriteLine($"The correct number is: {correctNum}"); // för debug
-Console.WriteLine("The goal of this game is to guess the secret number between 1 to 100.");
-while (true)
-{
-	Console.Write($"Please enter a number between {guessMin} and {guessMax}: ");
-	while (Int32.TryParse(Console.ReadLine(), out numInput))
-	{
-		if (numInput < guessMin || numInput > guessMax || numInput == 0)
-		{
-			Console.WriteLine($"Invalid entry. You must enter a number between {guessMin} and {guessMax}.");
-			Console.Write($"Please enter a number between {guessMin} and {guessMax}: ");
-		}
-		else
-		{
-			guessAmount++;
-			break;
-		}
-	}
-	if (numInput == correctNum)
-	{
-		Console.WriteLine("Congratulations! You've guessed the correct number!");
-		break;
-	}
-	else if (numInput > correctNum)
-	{
-		guessMax = numInput;
-		Console.WriteLine($"Incorrect. The number is lower than {numInput}");
-	}
-	else if (numInput < correctNum && numInput != 0)
-	{
-		guessMin = numInput;
-		Console.WriteLine($"Incorrect. The number is higher than {numInput}");
-	}
-}
+//correctNum = randomNum.Next(guessMin, guessMax);
+//// Console.WriteLine($"The correct number is: {correctNum}"); // för debug
+//Console.WriteLine("The goal of this game is to guess the secret number between 1 to 100.");
+//while (true)
+//{
+//	Console.Write($"Please enter a number between {guessMin} and {guessMax}: ");
+//	while (Int32.TryParse(Console.ReadLine(), out numInput))
+//	{
+//		if (numInput < guessMin || numInput > guessMax || numInput == 0)
+//		{
+//			Console.WriteLine($"Invalid entry. You must enter a number between {guessMin} and {guessMax}.");
+//			Console.Write($"Please enter a number between {guessMin} and {guessMax}: ");
+//		}
+//		else
+//		{
+//			guessAmount++;
+//			break;
+//		}
+//	}
+//	if (numInput == correctNum)
+//	{
+//		Console.WriteLine("Congratulations! You've guessed the correct number!");
+//		break;
+//	}
+//	else if (numInput > correctNum)
+//	{
+//		guessMax = numInput;
+//		Console.WriteLine($"Incorrect. The number is lower than {numInput}");
+//	}
+//	else if (numInput < correctNum && numInput != 0)
+//	{
+//		guessMin = numInput;
+//		Console.WriteLine($"Incorrect. The number is higher than {numInput}");
+//	}
+//}
 
 //    Extra utmaning 2: skriv ett sten-sax-påse spel. 
 //    Användaren skriver in “sten”, “sax” eller “påse”. Dators val slumpas med Random. 
@@ -285,3 +285,187 @@ while (true)
 //    Lägg det hela i en loop så spelet fortsätter tills man matar in en tom sträng (trycker enter utan att skriva något). 
 //    Skriv även ut poäng.
 
+//string[] weaponSelection = { "rock", "paper", "scissors" };
+//Random random = new Random();
+//string playerWeapon;
+//string computerWeapon;
+//int randomDice;
+//bool playAgain = false;
+
+//Console.WriteLine("In this game you play rock, paper, scissors against me.");
+//Console.WriteLine("Make your choice by typing either 'rock', 'paper' or 'scissors'");
+
+//while (true)
+//{
+//    Console.Write("Choose your weapon: ");
+//    playerWeapon = Console.ReadLine().ToLower();
+//    if (weaponSelection.Contains(playerWeapon))
+//    {
+//        playAgain = true;
+//        randomDice = random.Next(weaponSelection.Length - 1);
+//        computerWeapon = weaponSelection[randomDice];
+//        Console.WriteLine($"The computer chooses {computerWeapon}!");
+//        if (playerWeapon == weaponSelection[0])
+//        {
+//            switch (computerWeapon)
+//            {
+//                case "rock":
+//                    Console.WriteLine("It's a draw!");
+//                    break;
+//                case "paper":
+//                    Console.WriteLine("You lose!");
+//                    break;
+//                case "scissor":
+//                    Console.WriteLine("You win! Congratulation!");
+//                    break;
+//            }
+//        }
+//        if (playerWeapon == weaponSelection[1])
+//        {
+//            switch (computerWeapon)
+//            {
+//                case "rock":
+//                    Console.WriteLine("You win! Congratulations!");
+//                    break;
+//                case "paper":
+//                    Console.WriteLine("It's a draw!");
+//                    break;
+//                case "scissor":
+//                    Console.WriteLine("You lose!");
+//                    break;
+//            }
+//        }
+//        if (playerWeapon == weaponSelection[2])
+//        {
+//            switch (computerWeapon)
+//            {
+//                case "rock":
+//                    Console.WriteLine("You lose!");
+//                    break;
+//                case "paper":
+//                    Console.WriteLine("You win! Congratulations!");
+//                    break;
+//                case "scissor":
+//                    Console.WriteLine("It's a draw!");
+//                    break;
+//            }
+//        }
+
+//    }
+//    else
+//    {
+//        Console.WriteLine("This weapon does not exist.");
+//    }
+//    if (playAgain == true)
+//    {
+//        Console.Write("Would you like to play again? Enter Y/y for yes. Any other for no: ");
+//        if (Console.ReadLine().ToLower() != "y")
+//        {
+//            break;
+//        }
+//    }
+//}
+
+// Övningsupggift 10
+// Be användaren mata in en sträng.
+// Skriv ut varje tecken i strängen på en egen rad. Ex: Hej => H e j
+
+//string input;
+
+//Console.Write("Enter anything: ");
+//input = Console.ReadLine();
+//foreach (char c in input)
+//{
+//    Console.WriteLine(c);
+//}
+
+// Övningsuppgift 11
+//Skapa ett program med en array som innehåller strängarna “noll”, “ett”, “två”, “tre”, “fyra”, “fem”, “sex”, “sju”, “åtta”, “nio”. 
+//    Be sedan användaren att mata in en siffra. Använd arrayen för att skriva ut siffrans ord. Ex. Inmatning “3” => “tre”.
+
+//Extra utmaning: Användaren kan mata in en sträng med fritt antal siffror, 
+//    om man skriver in t.ex 432 så svarar programmet: “fyra - tre - två”.
+
+//string[] numbers = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+//int numInput;
+//string numInputStr;
+//string numOutput = "";
+//bool firstIteration = true;
+
+//Console.Write("Enter any number: ");
+//while (!int.TryParse(Console.ReadLine(), out numInput))
+//{
+//    Console.WriteLine("Invalid input! Integers only!");
+//}
+//numInputStr = Convert.ToString(numInput);
+//foreach (char c in numInputStr)
+//{
+//    if (firstIteration == true)
+//    {
+//        numOutput = numbers[c - '0'];
+//        firstIteration = false;
+//    }
+//    else
+//    {
+//        numOutput = numOutput + " - " + numbers[c - '0'];
+//    }
+
+//}
+//Console.WriteLine(numOutput);
+
+//      Övningsuppgift 12
+//      Fråga användaren hur många tal den vill mata in. 
+//      Fråga sedan efter talen i tur och ordning (“Ange tal 1:” osv). 
+//      När alla tal är inmatade skriv ut dem i omvänd ordning.
+
+bool validEntry = false;
+int numAmount = 0;
+string allEntries = "";
+bool firstIteration = true;
+
+while (validEntry == false)
+{
+    Console.Write("Enter amount of numbers you wish to input: ");
+	try
+	{
+		numAmount = int.Parse(Console.ReadLine());
+		validEntry = true;
+	}
+	catch (Exception e)
+	{
+		Console.WriteLine(e.Message);
+	}
+}
+int[] numEntries = new int[numAmount];
+
+for (int i = 0; i < numEntries.Length; i++)
+{
+	validEntry = false;
+	while (validEntry == false)
+	{
+		Console.Write($"Enter number number {i + 1}: ");
+		try
+		{
+			numEntries[i] = int.Parse(Console.ReadLine());
+			validEntry = true;
+		}
+		catch (Exception e)
+		{
+			Console.WriteLine(e.Message);
+		}
+	}
+}
+
+for (int i = 0; i < numEntries.Length; i++)
+{
+	if (firstIteration == true)
+	{
+		allEntries = Convert.ToString(numEntries[numEntries.Length - i - 1]);
+		firstIteration = false;
+	}
+	else
+	{
+		allEntries = allEntries + " " + Convert.ToString(numEntries[numEntries.Length - i - 1]);
+	}
+}
+Console.WriteLine(allEntries);
