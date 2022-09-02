@@ -418,54 +418,227 @@
 //      Fråga sedan efter talen i tur och ordning (“Ange tal 1:” osv). 
 //      När alla tal är inmatade skriv ut dem i omvänd ordning.
 
-bool validEntry = false;
-int numAmount = 0;
-string allEntries = "";
-bool firstIteration = true;
+//bool validEntry = false;
+//int numAmount = 0;
+//string allEntries = "";
+//bool firstIteration = true;
 
-while (validEntry == false)
-{
-    Console.Write("Enter amount of numbers you wish to input: ");
-	try
-	{
-		numAmount = int.Parse(Console.ReadLine());
-		validEntry = true;
-	}
-	catch (Exception e)
-	{
-		Console.WriteLine(e.Message);
-	}
-}
-int[] numEntries = new int[numAmount];
+//while (validEntry == false)
+//{
+//    Console.Write("Enter amount of numbers you wish to input: ");
+//	try
+//	{
+//		numAmount = int.Parse(Console.ReadLine());
+//		validEntry = true;
+//	}
+//	catch (Exception e)
+//	{
+//		Console.WriteLine(e.Message);
+//	}
+//}
+//int[] numEntries = new int[numAmount];
 
-for (int i = 0; i < numEntries.Length; i++)
-{
-	validEntry = false;
-	while (validEntry == false)
-	{
-		Console.Write($"Enter number number {i + 1}: ");
-		try
-		{
-			numEntries[i] = int.Parse(Console.ReadLine());
-			validEntry = true;
-		}
-		catch (Exception e)
-		{
-			Console.WriteLine(e.Message);
-		}
-	}
-}
+//for (int i = 0; i < numEntries.Length; i++)
+//{
+//	validEntry = false;
+//	while (validEntry == false)
+//	{
+//		Console.Write($"Enter number number {i + 1}: ");
+//		try
+//		{
+//			numEntries[i] = int.Parse(Console.ReadLine());
+//			validEntry = true;
+//		}
+//		catch (Exception e)
+//		{
+//			Console.WriteLine(e.Message);
+//		}
+//	}
+//}
 
-for (int i = 0; i < numEntries.Length; i++)
+//for (int i = 0; i < numEntries.Length; i++)
+//{
+//	if (firstIteration == true)
+//	{
+//		allEntries = Convert.ToString(numEntries[numEntries.Length - i - 1]);
+//		firstIteration = false;
+//	}
+//	else
+//	{
+//		allEntries = allEntries + " " + Convert.ToString(numEntries[numEntries.Length - i - 1]);
+//	}
+//}
+//Console.WriteLine(allEntries);
+
+//Övningsuppgift 13
+////Be användaren mata in en text. Skriv sedan ut texten baklänges.
+
+//string userInput;
+//string inputBackwards = "";
+
+//Console.Write("Input anything: ");
+//userInput = Console.ReadLine();
+
+//for (int i = 0; i < userInput.Length; i++)
+//{
+//    inputBackwards = inputBackwards + userInput[userInput.Length - i - 1];
+//}
+//Console.WriteLine(inputBackwards);
+
+//Övningsuppgift 14
+//Be användaren mata in en text. Skriv ut texten med alla vokaler ersatta med *
+// A, E, I, O, U, Y, Å, Ä och Ö
+//string userInput;
+//string output = "";
+//char[] vowels = new char[] { 'a', 'e', 'i', 'o', 'u', 'y', 'å', 'ä', 'ö' };
+
+//Console.Write("Input anything: ");
+//userInput = Console.ReadLine().ToLower();
+//foreach  (char c in userInput)
+//{
+//    if (vowels.Contains(c))
+//    {
+//        output = output + '*';
+//    }
+//    else
+//    {
+//        output = output + c;
+//    }
+//}
+//Console.WriteLine(output);
+
+//Extra utmaning: Skriv ut texten översatt till rövarspråket.
+
+//string userInput;
+//string output = "";
+//char[] consonants = new char[] { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'z', 'x' };
+
+//Console.Write("Input anything: ");
+//userInput = Console.ReadLine().ToLower();
+//foreach (char c in userInput)
+//{
+//    if (consonants.Contains(c))
+//    {
+//        output = output + c + 'o' + c;
+//    }
+//    else
+//    {
+//        output = output + c;
+//    }
+//}
+//Console.WriteLine(output);
+
+//  Övningsuppgift 15
+// Ett palindrom är ett ord som blir samma framlänges som baklänges.
+// Be användaren skriva in ett ord och ange sedan om det är ett palindrom eller inte.
+
+//string input;
+//string inputReverse = "";
+
+//Console.Write("Enter a word or sentence and I will tell you if it is a palindrome: ");
+//input = Console.ReadLine();
+
+//foreach (char c in input)
+//{
+//    inputReverse = c + inputReverse;
+//}
+//if (inputReverse == input)
+//{
+//    Console.WriteLine($"{input} is a palindrome.");
+//}
+//else
+//{
+//    Console.WriteLine($"{input} is not a palindrome.");
+//}
+
+// Övningsuppgift 16
+// Gör om uppgift 6 så man kan mata in allt på en rad (första talet, operator, andra talet).
+// Ignorera inmatade mellanslag i strängen.
+// Om man t.ex. matar in strängen “34 - 14”, så ska programmet skriva ut “= 20”.
+
+string input = "";
+bool validInput = false;
+int posOfOperator;
+char typeOfOperator = ' ';
+int firstNum = 0;
+int secondNum = 0;
+string firstNumStr = "";
+string secondNumStr = "";
+bool hasOperator;
+
+Console.WriteLine("This is a simple calculator.");
+Console.WriteLine("Enter a number followed by either a '+', '-', '*' or '/' followed by a second number to calculate.");
+
+while (validInput == false)
 {
-	if (firstIteration == true)
-	{
-		allEntries = Convert.ToString(numEntries[numEntries.Length - i - 1]);
-		firstIteration = false;
-	}
-	else
-	{
-		allEntries = allEntries + " " + Convert.ToString(numEntries[numEntries.Length - i - 1]);
-	}
+    hasOperator = false;
+    Console.Write("Input here: ");
+    input = Console.ReadLine();
+    if (input.Contains('*') && !input.Contains('/') && !input.Contains('+') && !input.Contains('-') && !input.Any(char.IsLetter) && input.IndexOf('*') == input.LastIndexOf('*')) // multiplikation
+    {
+        typeOfOperator = '*';
+        hasOperator = true;
+    }
+    else if (!input.Contains('*') && input.Contains('/') && !input.Contains('+') && !input.Contains('-') && !input.Any(char.IsLetter) && input.IndexOf('/') == input.LastIndexOf('/')) // division
+    {
+        typeOfOperator = '/';
+        hasOperator = true;
+    }
+    else if (!input.Contains('*') && !input.Contains('/') && input.Contains('+') && !input.Contains('-') && !input.Any(char.IsLetter) && input.IndexOf('+') == input.LastIndexOf('+')) // addition
+    {
+        typeOfOperator = '+';
+        hasOperator = true;
+    }
+    else if (!input.Contains('*') && !input.Contains('/') && !input.Contains('+') && input.Contains('-') && !input.Any(char.IsLetter) && input.IndexOf('-') == input.LastIndexOf('-')) // subtraktion
+    {
+        typeOfOperator = '-';
+        hasOperator = true;
+    }
+    else
+    {
+        Console.WriteLine("Invalid input!");
+    }
+    if (hasOperator == true)
+    {
+        posOfOperator = input.IndexOf(typeOfOperator);
+        for (int i = 0; i < posOfOperator; i++)
+        {
+            if (char.IsDigit(input[i]))
+            {
+                firstNumStr += input[i];
+            }
+        }
+        for (int i = posOfOperator; i < input.Length; i++)
+        {
+            if (char.IsDigit(input[i]))
+            {
+                secondNumStr += input[i];
+            }
+        }
+        firstNum = int.Parse(firstNumStr);
+        secondNum = int.Parse(secondNumStr);
+        if (firstNum == 0 || secondNum == 0)
+        {
+            Console.WriteLine("Invalid input!");
+        }
+        else
+        {
+            validInput = true;
+        }
+    }
 }
-Console.WriteLine(allEntries);
+switch (typeOfOperator)
+{
+    case '*':
+        Console.WriteLine($"{firstNum} multiplied by {secondNum} is equal to {firstNum * secondNum}");
+        break;
+    case '/':
+        Console.WriteLine($"{firstNum} divided by {secondNum} is equal to {Convert.ToDouble(firstNum) / secondNum}");
+        break;
+    case '+':
+        Console.WriteLine($"{firstNum} plus {secondNum} is equal to {firstNum + secondNum}");
+        break;
+    case '-':
+        Console.WriteLine($"{firstNum} minus {secondNum} is equal to {firstNum - secondNum}");
+        break;
+}
