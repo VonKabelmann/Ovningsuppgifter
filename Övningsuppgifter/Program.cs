@@ -215,13 +215,15 @@
 //Fortsätt till du skrivit ut 16 rader.
 
 
-//int value = 1;
+using System.Security.Principal;
 
-//for (int i = 0; i < 16; i++)
-//{
-//    Console.WriteLine(value);
-//    value = value * 2;
-//}
+int value = 1;
+
+for (int i = 0; i < 16; i++)
+{
+    Console.WriteLine(value);
+    value = value * 2;
+}
 
 //    Övningsuppgift 9
 //    Skriv ett program som frågar användaren efter ett tal mellan 1 och 100. 
@@ -556,89 +558,202 @@
 // Ignorera inmatade mellanslag i strängen.
 // Om man t.ex. matar in strängen “34 - 14”, så ska programmet skriva ut “= 20”.
 
-string input = "";
-bool validInput = false;
-int posOfOperator;
-char typeOfOperator = ' ';
-int firstNum = 0;
-int secondNum = 0;
-string firstNumStr = "";
-string secondNumStr = "";
-bool hasOperator;
+//string input = "";
+//bool validInput = false;
+//int posOfOperator;
+//char typeOfOperator = ' ';
+//int firstNum = 0;
+//int secondNum = 0;
+//string firstNumStr = "";
+//string secondNumStr = "";
+//bool hasOperator;
 
-Console.WriteLine("This is a simple calculator.");
-Console.WriteLine("Enter a number followed by either a '+', '-', '*' or '/' followed by a second number to calculate.");
+//Console.WriteLine("This is a simple calculator.");
+//Console.WriteLine("Enter a number followed by either a '+', '-', '*' or '/' followed by a second number to calculate.");
 
-while (validInput == false)
+//while (validInput == false)
+//{
+//    hasOperator = false;
+//    Console.Write("Input here: ");
+//    input = Console.ReadLine();
+//    if (input.Contains('*') && !input.Contains('/') && !input.Contains('+') && !input.Contains('-') && !input.Any(char.IsLetter) && input.IndexOf('*') == input.LastIndexOf('*')) // multiplikation
+//    {
+//        typeOfOperator = '*';
+//        hasOperator = true;
+//    }
+//    else if (!input.Contains('*') && input.Contains('/') && !input.Contains('+') && !input.Contains('-') && !input.Any(char.IsLetter) && input.IndexOf('/') == input.LastIndexOf('/')) // division
+//    {
+//        typeOfOperator = '/';
+//        hasOperator = true;
+//    }
+//    else if (!input.Contains('*') && !input.Contains('/') && input.Contains('+') && !input.Contains('-') && !input.Any(char.IsLetter) && input.IndexOf('+') == input.LastIndexOf('+')) // addition
+//    {
+//        typeOfOperator = '+';
+//        hasOperator = true;
+//    }
+//    else if (!input.Contains('*') && !input.Contains('/') && !input.Contains('+') && input.Contains('-') && !input.Any(char.IsLetter) && input.IndexOf('-') == input.LastIndexOf('-')) // subtraktion
+//    {
+//        typeOfOperator = '-';
+//        hasOperator = true;
+//    }
+//    else
+//    {
+//        Console.WriteLine("Invalid input!");
+//    }
+//    if (hasOperator == true)
+//    {
+//        posOfOperator = input.IndexOf(typeOfOperator);
+//        for (int i = 0; i < posOfOperator; i++)
+//        {
+//            if (char.IsDigit(input[i]))
+//            {
+//                firstNumStr += input[i];
+//            }
+//        }
+//        for (int i = posOfOperator; i < input.Length; i++)
+//        {
+//            if (char.IsDigit(input[i]))
+//            {
+//                secondNumStr += input[i];
+//            }
+//        }
+//        firstNum = int.Parse(firstNumStr);
+//        secondNum = int.Parse(secondNumStr);
+//        if (firstNum == 0 || secondNum == 0)
+//        {
+//            Console.WriteLine("Invalid input!");
+//        }
+//        else
+//        {
+//            validInput = true;
+//        }
+//    }
+//}
+//switch (typeOfOperator)
+//{
+//    case '*':
+//        Console.WriteLine($"{firstNum} multiplied by {secondNum} is equal to {firstNum * secondNum}");
+//        break;
+//    case '/':
+//        Console.WriteLine($"{firstNum} divided by {secondNum} is equal to {Convert.ToDouble(firstNum) / secondNum}");
+//        break;
+//    case '+':
+//        Console.WriteLine($"{firstNum} plus {secondNum} is equal to {firstNum + secondNum}");
+//        break;
+//    case '-':
+//        Console.WriteLine($"{firstNum} minus {secondNum} is equal to {firstNum - secondNum}");
+//        break;
+//}
+// Övningsuppgift 19
+// Skriv en metod DrawBox(int width, int height)
+// När man anropar metoden ska den tömma konsolen och skriva ut en rektangel
+// där de yttre tecknen består av ‘#’ och de inre av ‘-’
+// Exempel: DrawBox(7, 4);
+//  #######
+//  #-----#
+//  #-----#
+//  #######
+
+//static void DrawBox(int width, int height)
+//{
+//    Console.Clear();
+//    for (int i = 0; i < height; i++)
+//    {
+//        for (int j = 0; j < width; j++)
+//        {
+//            if (i == 0 || i == height - 1)
+//            {
+//                Console.Write("#");
+//            }
+//            else if (j == 0 || j == width - 1)
+//            {
+//                Console.Write("#");
+//            }
+//            else
+//            {
+//                Console.Write("-");
+//            }
+//        }
+//        Console.WriteLine("");
+//    }
+//}
+//DrawBox(7, 4);
+
+//  Övningsuppgift 20
+//  Använd DrawBox-metoden i föregående uppgift för att rita en box.
+//  Placera sedan ett @ i mitten av boxen. Om man använder piltangenterna ska man kunna flytta runt @.
+//  När den kommer till kanten av boxen så ska den inte kunna gå längre åt det hållet.
+//  Hint: För att flytta @ behöver du skriva ‘-’ på dess tidigare position och ‘@’ på den nya positionen.
+//  Spara bredd och höjd på boxen så du vet när den ska stanna.
+
+static void DrawBox(int width, int height)
 {
-    hasOperator = false;
-    Console.Write("Input here: ");
-    input = Console.ReadLine();
-    if (input.Contains('*') && !input.Contains('/') && !input.Contains('+') && !input.Contains('-') && !input.Any(char.IsLetter) && input.IndexOf('*') == input.LastIndexOf('*')) // multiplikation
+    Console.Clear();
+    for (int i = 0; i < height; i++)
     {
-        typeOfOperator = '*';
-        hasOperator = true;
+        for (int j = 0; j < width; j++)
+        {
+            if (i == 0 || i == height - 1)
+            {
+                Console.Write("#");
+            }
+            else if (i == height / 2 && j == width / 2)
+            {
+                Console.Write("@");
+            }
+            else if (j == 0 || j == width - 1)
+            {
+                Console.Write("#");
+            }
+            else
+            {
+                Console.Write("-");
+            }
+        }
+        Console.WriteLine("");
     }
-    else if (!input.Contains('*') && input.Contains('/') && !input.Contains('+') && !input.Contains('-') && !input.Any(char.IsLetter) && input.IndexOf('/') == input.LastIndexOf('/')) // division
+}
+int xSize = 11;
+int ySize = 9;
+DrawBox(xSize, ySize);
+int xPos = xSize / 2;
+int yPos = ySize / 2;
+
+ConsoleKeyInfo keyInfo;
+Console.SetCursorPosition(xPos, yPos);
+while (true)
+{
+    keyInfo = Console.ReadKey(true);
+    if (((xPos == 0 || xPos == xSize - 1) && (yPos >= 0 && yPos < ySize)) ^ ((yPos == 0 || yPos == ySize - 1) 
+        && (xPos >= 0 && xPos < xSize)) || ((xPos == 0 || xPos == xSize - 1) && (yPos == 0 || yPos == ySize - 1)))
     {
-        typeOfOperator = '/';
-        hasOperator = true;
+        Console.Write("#");
     }
-    else if (!input.Contains('*') && !input.Contains('/') && input.Contains('+') && !input.Contains('-') && !input.Any(char.IsLetter) && input.IndexOf('+') == input.LastIndexOf('+')) // addition
+    else if ((xPos > 0 && xPos < xSize - 1) && (yPos > 0 && yPos < ySize - 1))
     {
-        typeOfOperator = '+';
-        hasOperator = true;
-    }
-    else if (!input.Contains('*') && !input.Contains('/') && !input.Contains('+') && input.Contains('-') && !input.Any(char.IsLetter) && input.IndexOf('-') == input.LastIndexOf('-')) // subtraktion
-    {
-        typeOfOperator = '-';
-        hasOperator = true;
+        Console.Write("-");
     }
     else
     {
-        Console.WriteLine("Invalid input!");
+        Console.Write(" ");
     }
-    if (hasOperator == true)
+    switch (keyInfo.Key)
     {
-        posOfOperator = input.IndexOf(typeOfOperator);
-        for (int i = 0; i < posOfOperator; i++)
-        {
-            if (char.IsDigit(input[i]))
-            {
-                firstNumStr += input[i];
-            }
-        }
-        for (int i = posOfOperator; i < input.Length; i++)
-        {
-            if (char.IsDigit(input[i]))
-            {
-                secondNumStr += input[i];
-            }
-        }
-        firstNum = int.Parse(firstNumStr);
-        secondNum = int.Parse(secondNumStr);
-        if (firstNum == 0 || secondNum == 0)
-        {
-            Console.WriteLine("Invalid input!");
-        }
-        else
-        {
-            validInput = true;
-        }
+        case ConsoleKey.RightArrow:
+            xPos++;
+            break;
+        case ConsoleKey.LeftArrow:
+            xPos--;
+            break;
+        case ConsoleKey.UpArrow:
+            yPos--;
+            break;
+        case ConsoleKey.DownArrow:
+            yPos++;
+            break;
     }
-}
-switch (typeOfOperator)
-{
-    case '*':
-        Console.WriteLine($"{firstNum} multiplied by {secondNum} is equal to {firstNum * secondNum}");
-        break;
-    case '/':
-        Console.WriteLine($"{firstNum} divided by {secondNum} is equal to {Convert.ToDouble(firstNum) / secondNum}");
-        break;
-    case '+':
-        Console.WriteLine($"{firstNum} plus {secondNum} is equal to {firstNum + secondNum}");
-        break;
-    case '-':
-        Console.WriteLine($"{firstNum} minus {secondNum} is equal to {firstNum - secondNum}");
-        break;
+    
+    Console.SetCursorPosition(xPos, yPos);
+    Console.Write("@");
+    Console.SetCursorPosition(xPos, yPos);
 }
