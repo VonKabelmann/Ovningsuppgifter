@@ -215,15 +215,14 @@
 //Fortsätt till du skrivit ut 16 rader.
 
 
-using System.Security.Principal;
+//int value = 1;
 
-int value = 1;
+//for (int i = 0; i < 16; i++)
+//{
+//    Console.WriteLine(value);
+//    value = value * 2;
+//}
 
-for (int i = 0; i < 16; i++)
-{
-    Console.WriteLine(value);
-    value = value * 2;
-}
 
 //    Övningsuppgift 9
 //    Skriv ett program som frågar användaren efter ett tal mellan 1 och 100. 
@@ -686,74 +685,372 @@ for (int i = 0; i < 16; i++)
 //  Hint: För att flytta @ behöver du skriva ‘-’ på dess tidigare position och ‘@’ på den nya positionen.
 //  Spara bredd och höjd på boxen så du vet när den ska stanna.
 
-static void DrawBox(int width, int height)
-{
-    Console.Clear();
-    for (int i = 0; i < height; i++)
-    {
-        for (int j = 0; j < width; j++)
-        {
-            if (i == 0 || i == height - 1)
-            {
-                Console.Write("#");
-            }
-            else if (i == height / 2 && j == width / 2)
-            {
-                Console.Write("@");
-            }
-            else if (j == 0 || j == width - 1)
-            {
-                Console.Write("#");
-            }
-            else
-            {
-                Console.Write("-");
-            }
-        }
-        Console.WriteLine("");
-    }
-}
-int xSize = 11;
-int ySize = 9;
-DrawBox(xSize, ySize);
-int xPos = xSize / 2;
-int yPos = ySize / 2;
+//static void DrawBox(int width, int height)
+//{
+//    Console.Clear();
+//    for (int i = 0; i < height; i++)
+//    {
+//        for (int j = 0; j < width; j++)
+//        {
+//            if (i == 0 || i == height - 1)
+//            {
+//                Console.Write("#");
+//            }
+//            else if (i == height / 2 && j == width / 2)
+//            {
+//                Console.Write("@");
+//            }
+//            else if (j == 0 || j == width - 1)
+//            {
+//                Console.Write("#");
+//            }
+//            else
+//            {
+//                Console.Write("-");
+//            }
+//        }
+//        Console.WriteLine("");
+//    }
+//}
+//int xSize = 11;
+//int ySize = 9;
+//DrawBox(xSize, ySize);
+//int xPos = xSize / 2;
+//int yPos = ySize / 2;
 
-ConsoleKeyInfo keyInfo;
-Console.SetCursorPosition(xPos, yPos);
-while (true)
+//ConsoleKeyInfo keyInfo;
+//Console.SetCursorPosition(xPos, yPos);
+//while (true)
+//{
+//    keyInfo = Console.ReadKey(true);
+//    if (((xPos == 0 || xPos == xSize - 1) && (yPos >= 0 && yPos < ySize)) ^ ((yPos == 0 || yPos == ySize - 1) 
+//        && (xPos >= 0 && xPos < xSize)) || ((xPos == 0 || xPos == xSize - 1) && (yPos == 0 || yPos == ySize - 1)))
+//    {
+//        Console.Write("#");
+//    }
+//    else if ((xPos > 0 && xPos < xSize - 1) && (yPos > 0 && yPos < ySize - 1))
+//    {
+//        Console.Write("-");
+//    }
+//    else
+//    {
+//        Console.Write(" ");
+//    }
+//    switch (keyInfo.Key)
+//    {
+//        case ConsoleKey.RightArrow:
+//            xPos++;
+//            break;
+//        case ConsoleKey.LeftArrow:
+//            xPos--;
+//            break;
+//        case ConsoleKey.UpArrow:
+//            yPos--;
+//            break;
+//        case ConsoleKey.DownArrow:
+//            yPos++;
+//            break;
+//    }
+
+//    Console.SetCursorPosition(xPos, yPos);
+//    Console.Write("@");
+//    Console.SetCursorPosition(xPos, yPos);
+////}
+
+//static void DrawBox(int width, int height)
+//{
+//    Console.Clear();
+//    for (int i = 0; i < height; i++)
+//    {
+//        for (int j = 0; j < width; j++)
+//        {
+//            if (i == 0 || i == height - 1)
+//            {
+//                Console.Write("#");
+//            }
+//            else if (i == height / 2 && j == width / 2)
+//            {
+//                Console.Write("@");
+//            }
+//            else if (j == 0 || j == width - 1)
+//            {
+//                Console.Write("#");
+//            }
+//            else
+//            {
+//                Console.Write("-");
+//            }
+//        }
+//        Console.WriteLine("");
+//    }
+//}
+//int xSize = 11;
+//int ySize = 9;
+//DrawBox(xSize, ySize);
+//int xPos = xSize / 2;
+//int yPos = ySize / 2;
+
+//ConsoleKeyInfo keyInfo;
+//Console.SetCursorPosition(xPos, yPos);
+//while (true)
+//{
+//    keyInfo = Console.ReadKey(true);
+
+//    Console.Write("-");
+
+//    switch (keyInfo.Key)
+//    {
+//        case ConsoleKey.RightArrow:
+//            xPos++;
+//            break;
+//        case ConsoleKey.LeftArrow:
+//            xPos--;
+//            break;
+//        case ConsoleKey.UpArrow:
+//            yPos--;
+//            break;
+//        case ConsoleKey.DownArrow:
+//            yPos++;
+//            break;
+//    }
+
+//    Console.SetCursorPosition(xPos, yPos);
+//    Console.Write("@");
+//    Console.SetCursorPosition(xPos, yPos);
+//}
+
+//Övningsuppgift 25
+//    Skriv en ny klass som motsvarar en bil. Den ska ha privata fields för modell, pris och färg. Skapa publika properties för att hämta eller ändra värdet på varje field.
+//    Skriv en konstruktor till bilklassen som inte tar några parametrar.
+//    Skriv en till konstruktor som tar en parameter för varje property som klassen har. Hur kan man styra vilken konstruktor som anropas när man skapar ett objekt av klassen?
+//    Skriv en metod till bilklassen med namnet HalfPrice. När den anropas ska priset på bilen sänkas till hälften.
+
+//using Övningsuppgifter;
+
+//CarClass car1 = new CarClass();
+
+//CarClass car2 = new CarClass("Volvo", 32000, "Black");
+
+//Console.WriteLine(car2.Price);
+
+//car2.HalfPrice();
+
+//Console.WriteLine(car2.Price);
+
+
+// Övningsuppgift 26
+//Skapa en klass som kan användas som stegräknare.
+//Den ska ha en property Steps som bara går att läsa; en metod Step() som räknar upp Steps med 1 varje gång man anropar den; och en metod Reset() som nollställer räknaren.
+//    Instantiera klassen och skriv en loop som motsvarar att man går 1000 steg. Skriv ut värdet på Steps.
+
+//using Övningsuppgifter;
+
+//StepCounterClass stepCounter = new StepCounterClass();
+
+//while (stepCounter.Steps < 1000)
+//{
+//    stepCounter.Step();
+//}
+
+//Console.WriteLine(stepCounter);
+
+//Övningsuppgift 27
+//Skapa en en klass som har en property “red” och en property “blue”.
+//Båda ska vara en float och kunna ha ett värde mellan 0.0 och 100.0 men de ska vara “sammankopplade” på så vis att värdena tillsammans alltid är 100.0 d.v.s om man t.ex.
+////sätter “blue” till 8.5 och sedan läser av “red” så ska den returnera 91.5
+
+//using Övningsuppgifter;
+
+//RedBlueGradient redBlue = new RedBlueGradient();
+
+//redBlue.Blue = 22.9f;
+
+//Console.WriteLine($"Amount of red: {redBlue.Red}");
+//Console.WriteLine($"Amount of blue: {redBlue.Blue}");
+
+//Övningsuppgift 28
+//Skapa klassen “Person”, med properties “FirstName”, “LastName” och “Name”.
+//Om man ändrar någon av dem, så ska man få ut rätt värden när man läser av de andra. Använd en konstruktor som tar parametrar “firstName” och “lastName” när man instansierar objekten.
+//(I en första enklare version så kan Name vara read-only).
+//Ex1. Person p = new Person(“Anna”, “Berg”); // => p.Name == “Anna Berg” Ex2. p.Name = “Per Lind”; // => p.FirstName == “Per”, p.LastName == “Lind”
+
+//using Övningsuppgifter;
+
+//PersonClass p = new PersonClass("Pontus", "Ekdahl");
+//p.FirstName = "Pandos";
+//p.Name = "Saul Goodman";
+//Console.WriteLine(p);
+
+//Övningsuppgift 29
+//Skriv en klass som representerar en bil.
+//Varje bil ska kunna ha en färg som representeras av en enum (det ska finna minst 5 olika färger på bilar), samt en längd.
+//När man instansierar en bil så ska den få en random färg, och en random längd (mellan 3 och 5 meter).
+//Instansiera 1000 bilar och spara i en array. Skriv sedan ut den sammanlagda längden av alla gröna bilar.
+
+//using Övningsuppgifter;
+
+//CarClass[] carClasses = new CarClass[1000];
+//for (int i = 0; i < 1000; i++)
+//{
+//    carClasses[i] = new CarClass();
+//}
+
+//int totalGreenLength = 0;
+
+//foreach (CarClass car in carClasses)
+//{
+//    if (car.Color == "Green")
+//    {
+//        totalGreenLength += car.Length;
+//    }
+//}
+
+//Console.WriteLine(totalGreenLength);
+
+//Övningsuppgift 30
+////Gör en ny version av sten-sax-påse. Varje spelare ska representeras av ett “Player”-objekt.
+/// Man ska kunna anropa en metod på objekten som returnerar en enum med ett (random) av tre värden (sten, sax, påse).
+/// Objekten (klassen) ska ha en konstruktor som tar namn på spelaren, samt en x-, och y-koordinat som representerar ett ställe på skärmen där spelarens namn och poäng skrivs ut.
+/// Det ska finnas en property för poäng som automatisk uppdaterar spelarens poäng på den (x/y) positionen på skärmen varje gång man ändrar värdet på propertyn.
+
+//Ex: På översta raden längst till vänster skrivs “Computer: 0”.
+//Varje gång man uppdaterar poängen (t.ex computer.Score++;) så uppdateras poängen automatiskt på den positionen. Likadant för den andra spelaren.
+
+//Dessutom ska det finnas en statisk metod på klassen som tar två enum (sten, sax, påse) och returnerar en ny enum (win, lose, draw)
+////som säger om den första parametern man skickar in vinner över den andra (eller om det blir lika).
+
+////Hint: Använd Console.CursorLeft och Console.CursorTop. Spara den tidigare positionen innan du ändrar; gör uppdateringen, och hoppa tillbaks.
+
+//using Övningsuppgifter;
+
+//PlayerClass player = new PlayerClass("Player", 5, 1);
+//PlayerClass computer = new PlayerClass("Computer", 60, 1);
+
+//PlayerClass.RPS playerOption = PlayerClass.RPS.Paper;
+//PlayerClass.RPS computerOption = PlayerClass.RPS.Paper;
+//PlayerClass.WinLoseTie outcome;
+
+//ConsoleKeyInfo keyInfo;
+//var quitGame = false;
+
+//Console.CursorTop = 10;
+//Console.WriteLine("Welcome to Rock, Papers, Scissors!");
+//Console.WriteLine("Input 'R' for Rock, 'P' for Paper or 'S' for Scissors!");
+//Console.WriteLine("Press 'Escape' to quit!");
+//while (true)
+//{
+//    keyInfo = Console.ReadKey(true);
+//    switch (keyInfo.Key)
+//    {
+//        case ConsoleKey.R:
+//            playerOption = PlayerClass.RPS.Rock;
+//            break;
+//        case ConsoleKey.P:
+//            playerOption = PlayerClass.RPS.Paper;
+//            break;
+//        case ConsoleKey.S:
+//            playerOption = PlayerClass.RPS.Scissors;
+//            break;
+//        case ConsoleKey.Escape:
+//            quitGame = true;
+//            break;
+//    }
+
+//    computerOption = computer.GetRockPaperScissors();
+
+//    if (quitGame)
+//    {
+//        break;
+//    }
+//    outcome = PlayerClass.GetOutcome(playerOption, computerOption);
+//    Console.CursorTop = 5;
+//    Console.WriteLine($"You chose: {playerOption}. Computer chose: {computerOption}.        ");
+//    switch (outcome)
+//    {
+//        case PlayerClass.WinLoseTie.Win:
+//            Console.WriteLine("You win!            ");
+//            player.Points++;
+//            break;
+//        case PlayerClass.WinLoseTie.Lose:
+//            Console.WriteLine("You lose!          ");
+//            computer.Points++;
+//            break;
+//        case PlayerClass.WinLoseTie.Tie:
+//            Console.WriteLine("It's a tie!        ");
+//            break;
+//    }
+//}
+
+//Övningsuppgift 31
+//Skriv metod: void ConvertDegrees(float Celsius, out float Fahrenheit, out float Kelvin)
+//Metoden ska ta antal grader i Celsius in, och man ska få ut motsvarigheten i Fahrenheit och Kelvin i out-parametrarna.
+//Ta input från användaren i Celsius, använd metoden och skriv ut resultat.
+
+//void ConvertDegrees(float Celsius, out float Fahrenheít, out float Kelvin)
+//{
+//    Kelvin = Celsius + 273;
+//    Fahrenheít = (Celsius * 1.8f) + 32;
+//}
+
+//float celsius = 33;
+////ConvertDegrees(celsius, out float fahrenheit, out float kelvin);
+////Console.WriteLine($"Temp in celsius: {celsius}");
+////Console.WriteLine($"Temp in fahrenheit: {fahrenheit}");
+////Console.WriteLine($"Temp in kelvin: {kelvin}");
+
+////Övningsuppgift 32
+////Lägg till en statisk metod på klassen i uppgift 29.
+////Metoden ska ta en bil som inparameter och returnera en array med 10 bilar i samma färg, men med olika längd.
+
+using Övningsuppgifter;
+
+CarClass[] carClasses = new CarClass[1000];
+for (int i = 0; i < 1000; i++)
 {
-    keyInfo = Console.ReadKey(true);
-    if (((xPos == 0 || xPos == xSize - 1) && (yPos >= 0 && yPos < ySize)) ^ ((yPos == 0 || yPos == ySize - 1) 
-        && (xPos >= 0 && xPos < xSize)) || ((xPos == 0 || xPos == xSize - 1) && (yPos == 0 || yPos == ySize - 1)))
-    {
-        Console.Write("#");
-    }
-    else if ((xPos > 0 && xPos < xSize - 1) && (yPos > 0 && yPos < ySize - 1))
-    {
-        Console.Write("-");
-    }
-    else
-    {
-        Console.Write(" ");
-    }
-    switch (keyInfo.Key)
-    {
-        case ConsoleKey.RightArrow:
-            xPos++;
-            break;
-        case ConsoleKey.LeftArrow:
-            xPos--;
-            break;
-        case ConsoleKey.UpArrow:
-            yPos--;
-            break;
-        case ConsoleKey.DownArrow:
-            yPos++;
-            break;
-    }
-    
-    Console.SetCursorPosition(xPos, yPos);
-    Console.Write("@");
-    Console.SetCursorPosition(xPos, yPos);
+    carClasses[i] = new CarClass();
 }
+
+double totalGreenLength = 0;
+
+foreach (CarClass car in carClasses)
+{
+    if (car.Color == CarClass.Colors.Green)
+    {
+        totalGreenLength += car.Length;
+    }
+}
+
+Console.WriteLine(totalGreenLength);
+
+//Övningsuppgift 33
+//Skriv en metod som använder en ref int som in-parameter och som multiplicerar referensen med sig själv.
+//Den ska även returnera parametern konverterad till en sträng. Anropa metoden och skriv sedan ut både den inskickade (uppdaterade) variabeln, och det returnerade värdet.
+
+//string SquaredToString(ref int number)
+//{
+//    number = number * number;
+//    return number.ToString();
+//}
+
+//int number = 50;
+
+//string numberSquared;
+
+//numberSquared = SquaredToString(ref number);
+
+//Console.WriteLine(number);
+//Console.WriteLine(numberSquared);
+
+//Övningsuppgift 34
+//Uppdatera konstruktorn på klassen i uppgift 29 (och 32) så att bilen även får en random hastighet (mellan 60 och 240 km/h).
+//Skriv en metod DriveForOneHour() som uppdaterar en property Distance med total körsträcka.
+//Distance ska alltså initieras på 0, och sedan öka för varje gång man anropar DriveForOneHour().
+//Lägg sedan till en metod GetGraph() som returnerar en string på 20 tecken som representerar en körsträcka på 1000 mil och visar bilens position
+//enligt exempel: “|------x-----------|”. (‘x’ är alltså bilens position mellan start och mål (1000 mil).
+
+//Skriv sedan ett program som simulerar att 10 bilar åker 1000 mil i olika hastighet där varje bils position,
+//samt dess exakta körda distans (i text) uppdateras en gång i sekunden. (En sekund i simuleringen motsvarar alltså en timma i verkligheten). hint: Thread.Sleep(1000);
+
+//Ex: Bil A: | ------x---------- -| 3420 km Bil B: | -------------x---- | 8293 km..etc..
+//Extra utmaning: Lägg till så varje ‘x’ ritas ut i respektive bils färg; och så man ser hur lång tid som gått sedan start; samt eventuella andra förbättringar du kan komma på.
+
