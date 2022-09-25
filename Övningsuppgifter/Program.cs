@@ -1022,6 +1022,14 @@ foreach (CarClass car in carClasses)
 
 Console.WriteLine(totalGreenLength);
 
+CarClass thisCar = new CarClass();
+CarClass[] thisCarArr = CarClass.GetTenCars(thisCar);
+
+foreach (var car in thisCarArr)
+{
+    Console.WriteLine(car.ToString());
+}
+
 //Övningsuppgift 33
 //Skriv en metod som använder en ref int som in-parameter och som multiplicerar referensen med sig själv.
 //Den ska även returnera parametern konverterad till en sträng. Anropa metoden och skriv sedan ut både den inskickade (uppdaterade) variabeln, och det returnerade värdet.

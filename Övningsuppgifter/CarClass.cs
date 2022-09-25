@@ -25,7 +25,7 @@ namespace Övningsuppgifter
             Random random = new Random();
             Colors randColor = (Colors)random.Next(6);
             Color = randColor;
-            Length = random.Next(3, 6);
+            Length = random.Next(3, 14);// + random.NextDouble();
         }
 
         public override string ToString()
@@ -39,12 +39,32 @@ namespace Övningsuppgifter
 
         public static CarClass[] GetTenCars(CarClass car)
         {
-            Random random = new Random()
-            CarClass[] cars = new CarClass[9];
+            Random random = new Random();
+            CarClass[] cars = new CarClass[10];
             for (int i = 0; i < cars.Length; i++)
             {
-                
+                var sameLength = false;
+                CarClass newCar = new CarClass();
+                newCar.Color = car.Color;
+                for (int j = 0; j < i; j++)
+                {
+                    if (cars[j].Length == newCar.Length)
+                    {
+                        sameLength = true;
+                    }
+                }
+                if (sameLength)
+                {
+                    i--;
+                }
+                else
+                {
+                    cars[i] = newCar;
+                }
             }
+
+            return cars;
+
         }
     }
 }
